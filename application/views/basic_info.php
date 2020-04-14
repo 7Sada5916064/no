@@ -1,7 +1,7 @@
 <?php
 	$this->load->helper('url');
 	// echo "<pre>";
-	// print_r($cm);
+//	 print_r($cm);
 	// echo "</pre>";
 ?>
 <script>
@@ -305,8 +305,8 @@
 									<th><center>ดำเนินการ</center></th>
 								</tr>
 							</thead>
-							<tbody id = "tbody_cus">
-								<?php foreach($cm as $index=>$val){ ?>
+							<tbody id = "tbody_cus" >
+								<?php  foreach($cm as $index => $val){ ?>
 									<tr>
 										<td><center><?php echo $index+1; ?></center></td>
 										<td><center><?php echo $val->pre_name,$val->fist_name,' ',$val->last_name; ?></center></td>
