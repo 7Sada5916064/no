@@ -90,7 +90,7 @@
 		<tbody>
 			<?php foreach($bi as $index=>$value){ ?>
 				<tr class="box">
-					<td class="box" style='text-align:center;'><?php echo $value->it_name; ?></td>
+					<td class="box" style='text-align:center;'><?php echo $value->it_name; ?> <?php echo $value->pro_name; ?></td>
 					<td class="box" style='text-align:center;'><?php echo $value->od_unit; ?></td>
 					<td class="box" style='text-align:center;'><?php echo $value->od_per_unit; ?></td>
 					<td class="box" style='text-align:center;'><?php echo $value->od_net; ?></td>

@@ -12,7 +12,7 @@
 		
 	}
 	
-	function set_modal(it_id,it_name,it_detail,unit,it_un_id,past,it_img)
+	function set_modal(it_id,it_name,it_detail,unit,it_un_id,past,it_img,pro_name)
 	{
 		$("#it_id_edit").val(it_id);
 		$("#it_img_edit").val(it_img);
@@ -26,6 +26,7 @@
 		$("#it_un_id_edit").val(it_un_id);
 		$("#it_un_id_p").val(it_un_id);
 		$("#imagePreview_edit").attr('src',past);
+		$("#promotion").html("โปรโมชัน : "+pro_name);
 	}
 	
 	function calculate()
@@ -169,9 +170,40 @@
 										foreach($itm as $index=>$value)
 										{ ?>
 										<div class="col-md-4">
-											<center><a onclick='set_modal("<?php echo $value->it_id;?>","<?php echo $value->it_name;?>","<?php echo $value->it_detail;?>","<?php echo $value->unit;?>","<?php echo $value->it_un_id;?>","<?php echo base_url("public/image/$value->it_img");?>","<?php echo $value->it_img;?>")' data-toggle="modal" data-target="#modal_info_item">
+											<center><a onclick='set_modal("<?php echo $value->it_id;?>","<?php echo $value->it_name;?>","<?php echo $value->it_detail;?>","<?php echo $value->unit;?>","<?php echo $value->it_un_id;?>","<?php echo base_url("public/image/$value->it_img");?>","<?php echo $value->it_img;?>","<?php echo $value->pro_name;?>")' data-toggle="modal" data-target="#modal_info_item">
 											<img src="<?php echo base_url("public/image/$value->it_img");?>" alt="but" height="100px" width="100px"></a></center>
 										</div>
+									<?php } ?>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group row col-md-6">
+			<div class="col-md-12">
+				<nav class="navbar navbar-expand-lg navbar-light bg-info">
+					<a class="navbar-brand text-white" href="#" data-toggle="collapse" data-target="#collapse5"><h5>โปรโมชัน</h5></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+				</nav>
+				<div class="col-md-12 card collapse show" id="collapse5">
+					<div class="col-md-12 card-body">
+						<div class="gallery col-md-12">
+							<div class="row  col-md-12" >
+								<div class="form-group row col-md-12">
+									<?php
+										foreach($itm as $index=>$value)
+										{ ?>
+										<?php if($value->pro_status == 1){?>
+										<div class="col-md-4">
+											<center><a onclick='set_modal("<?php echo $value->it_id;?>","<?php echo $value->it_name;?>","<?php echo $value->it_detail;?>","<?php echo $value->unit;?>","<?php echo $value->it_un_id;?>","<?php echo base_url("public/image/$value->it_img");?>","<?php echo $value->it_img;?>","<?php echo $value->pro_name;?>")' data-toggle="modal" data-target="#modal_info_item">
+											<img src="<?php echo base_url("public/image/$value->it_img");?>" alt="but" height="100px" width="100px"></a></center>
+										</div>
+									<?php } ?>
 									<?php } ?>
 									
 								</div>
@@ -240,12 +272,14 @@
 							</thead>
 							<tbody id = "tbody_cus"><?php $count = 0; ?>
 								<?php foreach($cm as $index=>$val){ ?>
+									<?php if($val->cus_cut_id == 1){ ?>
 									<tr id="tr_cus<?php echo $index;?>" class="">
 										<td><center><?php echo $index+1; ?></center></td>
 										<td><center><?php echo $val->pre_name,$val->fist_name,' ',$val->last_name; ?></center></td>
 										<td><center><?php echo $val->cut_name; ?></center></td>
 										<td><center><input class="select_pc" value="<?php echo $val->cus_id; ?>" id="cus_id" name="cus_id[]" type="radio"></center></td>
 									</tr>
+									<?php } ?>
 								<?php } ?>
 							</tbody>
 						</table>
@@ -273,14 +307,14 @@
 								</tr>
 							</thead>
 							<tbody id = "tbody_cus">
-								<?php foreach($cm as $index=>$val){ ?>
-									<tr>
+								<?php if($val->cus_cut_id == 2){ ?>
+									<tr id="tr_cus<?php echo $index;?>" class="">
 										<td><center><?php echo $index+1; ?></center></td>
 										<td><center><?php echo $val->pre_name,$val->fist_name,' ',$val->last_name; ?></center></td>
 										<td><center><?php echo $val->cut_name; ?></center></td>
-										<td><center><input type="checkbox"></center></td>
+										<td><center><input class="select_pc" value="<?php echo $val->cus_id; ?>" id="cus_id" name="cus_id[]" type="radio"></center></td>
 									</tr>
-								<?php } ?>
+									<?php } ?>
 							</tbody>
 						</table>
 					</div>
@@ -310,6 +344,11 @@
 						<div class="row">
 							<div class="col-sm">
 								<p id="sum_unit"></p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm">
+								<p id="promotion"></p>
 							</div>
 						</div>
 						

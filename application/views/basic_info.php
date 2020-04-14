@@ -64,7 +64,7 @@
 			text_opt += "<option value='"+val['cut_id']+"'>"+val['cut_name']+"</option>";
 			count++;
 		})
-		$("#tbody").html(text_tbody);
+		$("#tbody_cut").html(text_tbody);
 		$("#cut_id").html(text_opt);
 	}
 	

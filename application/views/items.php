@@ -25,7 +25,7 @@
 		
 	}
 	
-	function set_modal(it_id,it_name,it_detail,unit,it_un_id,past,it_img)
+	function set_modal(it_id,it_name,it_detail,unit,it_un_id,past,it_img,pro_status,pro_name)
 	{
 		$("#it_id_edit").val(it_id);
 		$("#it_img_edit").val(it_img);
@@ -33,6 +33,8 @@
 		$("#it_detail_edit").val(it_detail);
 		$("#unit_edit").val(unit);
 		$("#it_un_id_edit").val(it_un_id);
+		$("#pro_status").val(pro_status);
+		$("#pro_name").val(pro_name);
 		$("#imagePreview_edit").attr('src',past);
 	}
 	
@@ -78,7 +80,7 @@
 					<form action="<?php echo site_url('Main_controller/delete_item');?>" method="post">
 						<input hidden name="it_id" value="<?php echo $value->it_id; ?>">
 						<input hidden name="it_img" value="<?php echo $value->it_img; ?>">
-						<center><a onclick='set_modal("<?php echo $value->it_id;?>","<?php echo $value->it_name;?>","<?php echo $value->it_detail;?>","<?php echo $value->unit;?>","<?php echo $value->it_un_id;?>","<?php echo base_url("public/image/$value->it_img");?>","<?php echo $value->it_img;?>")' data-toggle="modal" data-target="#modal_info_item">
+						<center><a onclick='set_modal("<?php echo $value->it_id;?>","<?php echo $value->it_name;?>","<?php echo $value->it_detail;?>","<?php echo $value->unit;?>","<?php echo $value->it_un_id;?>","<?php echo base_url("public/image/$value->it_img");?>","<?php echo $value->it_img;?>","<?php echo $value->pro_status;?>","<?php echo $value->pro_name;?>")' data-toggle="modal" data-target="#modal_info_item">
 						<img src="<?php echo base_url("public/image/$value->it_img");?>" alt="but" height="100px" width="100px"></a></center>
 						<center><button type="submit" class="btn btn-danger">ลบ</button></center>
 					</form>
@@ -150,7 +152,7 @@
 							<img id="imagePreview_edit" src="" alt="สินค้า" class="image-preview__image">
 							<span class="image-preview__default-text"></span>
 						</div></center>
-						<p><input onchange="preview_image_edit(event)" type="file" id="it_img" name="it_img" required accept="image/*"></p>
+						<p><input onchange="preview_image_edit(event)" type="file" id="it_img" name="it_img" accept="image/*"></p>
 						<p><input required type="text" class="form-control" placeholder="ชื่อสินค้า" id="it_name_edit" name="it_name"></p>
 						<div class="row">
 							<div class="col-sm">
@@ -163,6 +165,17 @@
 										<option value="<?php echo $value->un_id?>"><?php echo $value->un_name?></option>
 									<?php } ?>
 								</select>
+							</div>
+						</div><br>
+						<div class="row">
+							<div class="col-sm">
+								<select  name="pro_status" id="pro_status" class="form-control">
+									<option value="0">ปิดโปร</option>
+									<option value="1">เปิดโปร</option>
+								</select> 
+							</div>
+							<div class="col-sm">
+								<input  type="text" class="form-control" placeholder="โปรโมชัน" id="pro_name" name="pro_name">
 							</div>
 						</div>
 						<br>

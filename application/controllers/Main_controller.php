@@ -136,10 +136,14 @@
 		
 		public function update_item()
 		{	
+
 			$it_img = $this->input->post("it_img_edit");
-			unlink("public/image/$it_img");
 			$this->load->model('Item_model');
-			$this->Item_model->update_item();
+			$unlink = $this->Item_model->update_item();
+			if($unlink)
+			{
+				unlink("public/image/$it_img");
+			}
 			$this->items_show_t();
 		}
 		
@@ -176,7 +180,7 @@
 		
 		public function insert_order()
 		{
-			//$od_bil_id = $this->insert_bill();
+			$od_bil_id = $this->insert_bill();
 			$this->load->model('Order_model');
 			$this->load->model('Item_model');
 			
