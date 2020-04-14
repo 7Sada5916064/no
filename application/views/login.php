@@ -61,7 +61,7 @@
 				<div class="col-md-4">
 				</div>
 				<div class="col-md-4">
-					<center><a href="<?php echo site_url('Main_controller/register_show');?>">Register</a></center>
+					<!--<center><a href="<?php echo site_url('Main_controller/register_show');?>">Register</a></center>-->
 				</div>
 				<div class="col-md-4">
 				</div>
