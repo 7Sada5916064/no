@@ -307,7 +307,8 @@
 								</tr>
 							</thead>
 							<tbody id = "tbody_cus">
-								<?php if($val->cus_cut_id == 2){ ?>
+								<?php foreach($cm as $index=>$val){ ?>
+									<?php if($val->cus_cut_id == 2){ ?>
 									<tr id="tr_cus<?php echo $index;?>" class="">
 										<td><center><?php echo $index+1; ?></center></td>
 										<td><center><?php echo $val->pre_name,$val->fist_name,' ',$val->last_name; ?></center></td>
@@ -315,6 +316,7 @@
 										<td><center><input class="select_pc" value="<?php echo $val->cus_id; ?>" id="cus_id" name="cus_id[]" type="radio"></center></td>
 									</tr>
 									<?php } ?>
+								<?php } ?>
 							</tbody>
 						</table>
 					</div>
